@@ -46,7 +46,7 @@
         </form>
 
         <!--  Forgot password  -->
-        <form class="forget-form" action="http://localhost:5000/admin/forgotPassword" method="post">
+        <form class="forget-form" action="http://3.16.202.104:5000/admin/forgotPassword" method="post">
           <h3 class="login-head"><i class="fa fa-lg fa-fw fa-lock"></i>Forgot Password ?</h3>
           <div class="form-group">
             <label class="control-label">EMAIL</label>
@@ -83,7 +83,7 @@
       $('#logform').on('submit', async function(e){
         e.preventDefault();
         await $.ajax({
-          url: "http://localhost:5000/admin/login/",
+          url: "http://3.16.202.104:5000/admin/login",
           type: "POST",
           data: {
             email:$("#EMAIL").val(),
@@ -106,7 +106,7 @@
                 'isAdmin':1
             })))
               // window.location.href = '/dashboard.html';
-              window.location.href = '/frontend/dashboard.html';
+              window.location.href = '/dashboard.html';
 
             }
           },

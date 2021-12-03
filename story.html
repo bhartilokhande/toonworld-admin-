@@ -29,6 +29,7 @@
       <!-- Navbar Right Menu-->
       <ul class="app-nav">
        
+       
         <!-- User Menu-->
         <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
           <ul class="dropdown-menu settings-menu dropdown-menu-right">
@@ -46,12 +47,7 @@
       <ul class="app-menu">
         <li><a class="app-menu__item active" href="dashboard.html"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
        
-       <!-- <li><a class="app-menu__item " href="userlist.html"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">User list</span></a></li>
-       <li><a class="app-menu__item " href="dashboard.html"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">NFT list</span></a></li>
-       <li><a class="app-menu__item " href="dashboard.html"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">NFT Creation</span></a></li>
-       <li><a class="app-menu__item " href="dashboard.html"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">NFT Owner</span></a></li>
-       <li><a class="app-menu__item " href="dashboard.html"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">NFT Transaction</span></a></li> -->
-
+      
        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">CMS</span><i class="treeview-indicator fa fa-angle-right"></i></a>
         <ul class="treeview-menu">
           <li><a class="treeview-item" href="page.html"><i class="icon fa fa-circle-o"></i>About Us</a></li>
@@ -70,7 +66,7 @@
     <main class="app-content">
       <div class="app-title">
         <div>
-          <h2>FAQ</h2>
+          <h2>Story</h2>
          
         </div>
         <ul class="app-breadcrumb breadcrumb">
@@ -85,22 +81,23 @@
             <div class="row">
               <div class="col-lg-12">
                 
-                <form id="form" class="form-horizontal" action="http://localhost:5000/admin/update_FAQ?faq_id=" method="post">
+                <form id="form" class="form-horizontal" action="http://3.16.202.104:5000/admin/update_cms_contents?cms_id=" method="post">
                   
                   <div class="form-group">
                     <label for="exampleInputEmail1">Title</label>
 
-                    <h1 type="text" id="question" class="form-control" name="question" placeholder="Enter Title" value=""></h1>
+                    <h1 type="text" id="title" class="form-control" name="title" placeholder="Enter Title" value=""></h1>
+                    <!-- <input id="title" class="ckeditor" name="title" required data-parsley-required data-parsley-required-message="Enter Description"></input> -->
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Content</label>
 
                     <textarea id="editor1" class="" name="editor1" required data-parsley-required data-parsley-required-message="Enter Description">
                     </textarea>
-
+                    
                   </div>
                     <div class="tile-footer">
-                      <button id="btn" type="submit" name="update" class="btn btn-primary">Update</button>
+                      <button type="submit" name="update" class="btn btn-primary">Update</button>
                     </div>
                 </form>
               </div>
@@ -109,7 +106,9 @@
         </div>
       </div>    
 </main>
-   </body> 
+   </body>
+
+    
     <!-- Essential javascripts for application to work-->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>
@@ -163,30 +162,26 @@
     <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
     <script src="http://parsleyjs.org/dist/parsley.js"></script>
     <script>
-      console.log(window.location.href);
-      var url_string = window.location.href;
-      var url = new URL(url_string);
-      var faq_id = url.searchParams.get("faq_id");
-      console.log(faq_id);
+        fetch("http://3.16.202.104:5000/admin/getCMS/Story", {method:"POST"})
+        .then(res => {res.json().then(data => {
+            document.getElementById('title').innerHTML =data.data["Name"];
 
-      fetch("http://localhost:5000/admin/getFAQById?faq_id="+faq_id, {method:"GET"})
-      .then(res=>{res.json().then(data=>{
-        console.log(data)
-        document.getElementById('question').innerHTML =data["question"];
-        var status = data["answer"];
-        var faq_id = data["_id"]
-
-        $('#form').attr('action', function(i, v) {
-              console.log(v + faq_id);
-              return v + faq_id;
+            var status = data.data["description"];
+            var cms_id = data.data["_id"]
+            // console.log(cms_id)
+            $('#form').attr('action', function(i, v) {
+              console.log(v + cms_id);
+              return v + cms_id;
             });
 
-        CKEDITOR.instances.editor1.setData( status, function(){
-          this.checkDirty(); 
-        });
-
-      })
-      })
+            CKEDITOR.instances.editor1.setData( status, function()
+            {
+                this.checkDirty(); 
+            });
+          }
+            )
+        }
+        )
     </script> 
     <script>
       CKEDITOR.replace('editor1');
@@ -205,8 +200,7 @@
     <script>
        var token = JSON.parse(localStorage.getItem('loginToken'))
         if(!token){
-          // window.location.href = '/page-login.html';
-          window.location.href = '/frontend/page-login.html';
+          window.location.href = '/index.html';
         }
         // if(!token && token.token == null && token.token == undefined && token.login == false && isAdmin != 1 ){
         //   window.location.href = '/frontend/page-login.html';
@@ -215,8 +209,7 @@
     <script>
       function logout(){
         localStorage.removeItem("loginToken")
-        // window.location.href = '/page-login.html';
-        window.location.href = '/frontend/page-login.html';
+        window.location.href = '/index.html';
       }
     </script>
 

@@ -114,7 +114,7 @@
                                         <script src="js/jquery-3.3.1.min.js"></script>
                                         <script type="text/javascript"> </script>
                                         <script>
-                                            fetch("http://localhost:5000/admin/getSocial")
+                                            fetch("http://3.16.202.104:5000/admin/getSocial")
                                                 .then(res => {
                                                     res.json().then(data => {
                                                         if (data.data.length > 0) {
@@ -129,8 +129,8 @@
                                                                 temp += "<td>" + itemData.url + "</td>";
 
 
-                                                                temp += "<td>" + "<a  title='Edit' href='http://127.0.0.1:5500/frontend/update_social.html?social_id=" + social_id + "' class='btn btn-primary edit_add'><i class='fa fa-pencil'></i></a>"; 
-                                                                temp += "<a  title='Delete' href='http://localhost:5000/admin/delete_social?social_id=" + social_id + "' class='btn  btn-danger'><i class='fa fa-trash'></i> </a>" + "</tr>"
+                                                                temp += "<td>" + "<a  title='Edit' href='http://3.16.202.104/admin/update_social.html?social_id=" + social_id + "' class='btn btn-primary edit_add'><i class='fa fa-pencil'></i></a>"; 
+                                                                temp += "<a  title='Delete' href='http://3.16.202.104:5000/admin/delete_social?social_id=" + social_id + "' class='btn  btn-danger'><i class='fa fa-trash'></i> </a>" + "</tr>"
                                                                 i++
 
                                                             });
@@ -162,7 +162,7 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div id="form-container" class="form-container">
-                    <form id="form" class="form-horizontal" action="http://localhost:5000/admin/addsocail"
+                    <form id="form" class="form-horizontal" action="http://3.16.202.104:5000/admin/addsocail"
                         method="post">
 
                         <div class="form-group">
@@ -252,53 +252,19 @@
     <script>
         var token = JSON.parse(localStorage.getItem('loginToken'))
         if (!token) {
-            window.location.href = '/frontend/page-login.html';
+            window.location.href = '/index.html';
         }
     </script>
 
     <script>
         function logout() {
             localStorage.removeItem("loginToken")
-            window.location.href = '/frontend/page-login.html';
+            window.location.href = '/index.html';
         }
     </script>
 
-    <!-- <script>
-        fetch('http://localhost:5000/admin/getSocial')
-            .then((response) => {
-                return response.json();
-            })
-            .then((data) => {
-                console.log(data);
-            });
-    </script> -->
 
-    <!-- fetch("http://localhost:5000/admin/getSocial")
-.then(res => {
-    res.json().then(data => {
-        if (data.data.length > 0) {
-            var temp = "";
-            var i = 1
-            data.data.forEach((itemData) => {
-                var social_id = itemData._id
-
-                temp += "<tr>";
-                // temp += "<td>" + i + "</td>";
-                temp += "<td>" + itemData.name + "</td>";
-                temp += "<td>" + itemData.url + "</td>";
-                // temp += "<td>" + "<a  title='Edit' href='http://127.0.0.1:5501/frontend/update.html?social_id=" + social_id + "' class='btn btn-primary edit_add'><i class='fa fa-pencil'></i></a>";
-                // temp += "<a  title='Delete' href='' class='btn  btn-danger'><i class='fa fa-trash'></i> </a>"+"</tr>"
-                // temp += "<a  title='Delete' href='http://localhost:5000/admin/delete_FAQ?faq_id=" + faq_id + "' class='btn  btn-danger'><i class='fa fa-trash'></i> </a>" + "</tr>"
-                i++
-
-            });
-
-            document.getElementById('sociallist').innerHTML = temp;
-        }
-    })
-}
-) -->
-    <!-- http://127.0.0.1:5501/frontend/update.html?social_id=" + social_id + " -->
+    
 </body>
 
 </html>

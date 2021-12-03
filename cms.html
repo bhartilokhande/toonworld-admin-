@@ -19,7 +19,7 @@
         <h1>CMS</h1>
       </div>
       <div class="login-box">
-        <form class="login-form" action="http://localhost:5000/cms/addcms" method="post">
+        <form class="login-form" action="http://3.16.202.104:5000/cms/addcms" method="post">
           <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>Add CMS</h3>
           <div class="form-group">
             <label class="control-label">Name</label>
@@ -55,7 +55,7 @@
        var token = JSON.parse(localStorage.getItem('loginToken'))
         if(!token){
           // window.location.href = '/page-login.html';
-          window.location.href = '/frontend/page-login.html';
+          window.location.href = '/index.html';
         }
         // if(!token && token.token == null && token.token == undefined && token.login == false && isAdmin != 1 ){
         //   window.location.href = '/frontend/page-login.html';

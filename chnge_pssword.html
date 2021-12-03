@@ -114,7 +114,7 @@
       $('#changepasswordform').on('submit', async function(e){
         e.preventDefault();
         await $.ajax({
-          url: "http://localhost:5000/admin/change_password",
+          url: "http://3.16.202.104:5000/admin/change_password",
           type: "POST",
           data: {
             email:$("#EMAIL").val(),
@@ -136,7 +136,7 @@
             }
             if(result.statusCode == 200){
               // window.location.href = '/page-login.html';
-              window.location.href = '/frontend/page-login.html';
+              window.location.href = '/index.html';
             }
           },
           error:function(err){
@@ -149,7 +149,7 @@
       var token = JSON.parse(localStorage.getItem('loginToken'))
       if(!token){
         // window.location.href = '/page-login.html';
-        window.location.href = '/frontend/page-login.html';
+        window.location.href = '/index.html';
       }
       // if(!token && token.token == null && token.token == undefined && token.login == false && isAdmin != 1 ){
       //   window.location.href = '/frontend/page-login.html';
