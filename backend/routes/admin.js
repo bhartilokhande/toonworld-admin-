@@ -20,7 +20,8 @@ const {
     addSocail,
     getSocial,
     update_social,
-    delete_social
+    delete_social,
+    getOneSocial
     // logout,
    
 }
@@ -42,6 +43,7 @@ router.post("/addsocail",addSocail);
 router.get("/getSocial",getSocial)
 router.post("/update_social",update_social)
 router.get("/delete_social",delete_social)
+router.post("/getOneSocial",getOneSocial)
 // router.get("/logout",logout)
 
 

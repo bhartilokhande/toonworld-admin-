@@ -79,7 +79,7 @@
             <div class="row">
               <div class="col-lg-12">
                 
-                <form id="form" class="form-horizontal" action="http://3.16.202.104:5000/admin/update_cms_contents?cms_id=" method="post">
+                <form id="form" class="form-horizontal" action="http://www.toonworld.io:5000/admin/update_cms_contents?cms_id=" method="post">
                   
                   <div class="form-group">
                     <label for="exampleInputEmail1">Title</label>
@@ -159,7 +159,7 @@
     <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
     <script src="http://parsleyjs.org/dist/parsley.js"></script>
     <script>
-        fetch("http://localhost:5000/admin/getCMS/T&C", {method:"POST"})
+        fetch("http://www.toonworld.io:5000/admin/getCMS/T&C", {method:"POST"})
         .then(res => {res.json().then(data => {
             document.getElementById('title').innerHTML =data.data["Name"];
 
@@ -197,7 +197,7 @@
        var token = JSON.parse(localStorage.getItem('loginToken'))
         if(!token){
           // window.location.href = '/page-login.html';
-          window.location.href = '/index.html';
+          window.location.href = '/admin/index.html';
         }
         // if(!token && token.token == null && token.token == undefined && token.login == false && isAdmin != 1 ){
         //   window.location.href = '/frontend/page-login.html';
@@ -207,7 +207,7 @@
       function logout(){
         localStorage.removeItem("loginToken")
         // window.location.href = '/page-login.html';
-        window.location.href = '/index.html';
+        window.location.href = '/admin/index.html';
       }
     </script>
 
