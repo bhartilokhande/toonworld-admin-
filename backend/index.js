@@ -1,11 +1,18 @@
 const admin = require("./routes/admin");
 const cms = require("./routes/cms")
 const express = require('express');
+const cors = require('cors')
 const app = express();
 
 var bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+
+var corsOptions = {
+  origin: 'http://toonworld.io',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+app.use(cors())
 
 const  mongoose = require('mongoose')
 
@@ -20,8 +27,8 @@ mongoose
     console.log(err);
   })
 
-app.use('/admin',admin);
-app.use('/cms', cms)
+app.use('/admin', cors(corsOptions), admin);
+app.use('/cms', cors(corsOptions), cms)
 
 
 
