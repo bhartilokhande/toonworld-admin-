@@ -112,26 +112,26 @@ exports.update_cms_contents = async (req,res)=>{
     CMS.updateOne({_id:cms_id},{$set:{description:description}}).then(result=>{
         // return res.status(200).json({message: "Contents  Updated"})
         if(cmsData.Name == "AboutUs"){
-            return res.redirect("http://127.0.0.1:5501/frontend/page.html")
+            return res.redirect("http://3.16.202.104/admin/page.html")
             // return res.redirect("http://127.0.0.1:5501/page.html")
         }
         if(cmsData.Name == "ContactUs"){
-            return res.redirect("http://127.0.0.1:5501/frontend/contactus.html")
+            return res.redirect("http://3.16.202.104/admin/contactus.html")
             // return res.redirect("http://127.0.0.1:5501/contactus.html")
 
         }
         if(cmsData.Name == "T&C"){
-            return res.redirect("http://127.0.0.1:5501/frontend/t&c.html")
+            return res.redirect("http://3.16.202.104/admin/t&c.html")
             // return res.redirect("http://127.0.0.1:5501/t&c.html")
 
         }
         if(cmsData.Name == "PrivacyPolicy"){
-            return res.redirect("http://127.0.0.1:5501/frontend/privacy_policy.html")
+            return res.redirect("http://3.16.202.104/admin/privacy_policy.html")
             // return res.redirect("http://127.0.0.1:5501/privacy_policy.html")
 
         }
         if(cmsData.Name == "Story"){
-            return res.redirect("http://127.0.0.1:5501/frontend/story.html")
+            return res.redirect("http://3.16.202.104/admin/story.html")
             // return res.redirect("http://127.0.0.1:5501/story.html")
 
         }
@@ -157,7 +157,7 @@ exports.addFAQ = async(req,res)=>{
         response.save()
         .then((result)=>{
             // res.json({statusCode:"200",statusMsj:"Successfuly Add FAQ Question", data:result})
-            res.redirect("http://127.0.0.1:5501/frontend/faq.html")
+            res.redirect("http://3.16.202.104/admin/faq.html")
             // res.redirect("http://127.0.0.1:5501/faq.html")
 
         }).catch((err)=>{
@@ -186,7 +186,7 @@ exports.update_FAQ = async (req,res)=>{
     }
     FAQ.updateOne({_id:faq_id},{$set:{question:question, answer:answer}}).then(result=>{
         // return res.status(200).json({message: "Contents  Updated"})
-        return res.redirect("http://127.0.0.1:5501/frontend/faq.html")
+        return res.redirect("http://3.16.202.104/admin/faq.html")
         // return res.redirect("http://127.0.0.1:5501/faq.html")
 
     }).catch(err=>{
@@ -202,7 +202,7 @@ exports.delete_FAQ = async (req, res)=>{
     }
     var delete_FAQ_Data = await FAQ.updateOne({_id:faq_id}, {$set:{isDelete:true}})
     // console.log("delete_FAQ_Data",delete_FAQ_Data)
-    res.redirect("http://127.0.0.1:5501/frontend/faq.html")
+    res.redirect("http://3.16.202.104/admin/faq.html")
     // res.redirect("http://127.0.0.1:5501/faq.html")
 
 }
@@ -268,7 +268,7 @@ exports.forgotPassword = async(req, res)=>{
         }
         else {
             console.log("Server is ready to take our messages");
-            return res.redirect("http://127.0.0.1:5501/frontend/forgot_password.html?email="+email)
+            return res.redirect("http://3.16.202.104/admin/forgot_password.html?email="+email)
             // return res.redirect("http://127.0.0.1:5501/forgot_password.html?email="+email)
 
         }
@@ -429,7 +429,7 @@ exports.addSocail = async (req,res) => {
             //      msg:"successfuly add socail name",
             //      data:result
             //  })
-            res.redirect("http://127.0.0.1:5500/frontend/social.html")
+            res.redirect("http://3.16.202.104/admin/social.html")
          }).catch((err) => {
              console.log(err);
              return res.send(err);
@@ -476,7 +476,7 @@ exports.update_social = async(req,res) => {
 
     Social.updateOne({_id:social_id},{$set:{name:name,url:url}})
     .then(result => {
-        return res.redirect("http://127.0.0.1:5500/frontend/social.html")
+        return res.redirect("http://3.16.202.104/admin/social.html")
         // res.status(200).json({
         //     msg:"content updated",
         //     data:result
@@ -510,7 +510,7 @@ exports.delete_social = async(req,res) => {
     //  })
 
     //  console.log("delet_social_data",delete_social_data)
-    res.redirect("http://127.0.0.1:5500/frontend/social.html")
+    res.redirect("http://3.16.202.104/admin/social.html")
 
 }
 
