@@ -159,7 +159,7 @@
     <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
     <script src="http://parsleyjs.org/dist/parsley.js"></script>
     <script>
-        fetch("https://www.toonworld.io:5000/admin/getCMS/PrivacyPolicy", {method:"POST"})
+        fetch("http://www.toonworld.io:5000/admin/getCMS/PrivacyPolicy", {method:"POST"})
         .then(res => {res.json().then(data => {
             document.getElementById('title').innerHTML =data.data["Name"];
 
