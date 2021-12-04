@@ -3,13 +3,13 @@ const cms = require("./routes/cms")
 const express = require('express');
 const cors = require('cors')
 // const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
-// const https = require('https');
-// const fs = require('fs');
+const https = require('https');
+const fs = require('fs');
 
-// const options = {
-//   key: fs.readFileSync('key.pem'),
-//   cert: fs.readFileSync('cert.pem')
-// };
+const options = {
+  key: fs.readFileSync('key.pem'),
+  cert: fs.readFileSync('cert.pem')
+};
 
 
 
@@ -25,7 +25,7 @@ app.use(bodyParser.json())
 // app.use(redirectToHTTPS());
 
 var corsOptions = {
-  origin: 'https://toonworld.io/',
+  origin: 'https://toonworld.io',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 app.use(cors())
@@ -48,17 +48,22 @@ app.use('/cms', cors(corsOptions), cms)
 
 
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`server is running on port ${ PORT }`);
-});
+// const PORT = process.env.PORT || 5000;
+// app.listen(PORT, () => {
+//     console.log(`server is running on port ${ PORT }`);
+// });
 
 // https.createServer(options, function (req, res) {
-//   res.writeHead(200);
-//   console.log(`server is running on port ${ PORT }`);
+//   // res.writeHead(200);
+//   // res.write('Hello World!');
+//   // app.use('/cms', cors(corsOptions), cms);
+//   app.use('/admin', cors(corsOptions), admin);
+//   console.log(`server is running on port`);
+//   res.end();
 // }).listen(5000);
 
-
+https.createServer(options, app ).listen(5000, console.log(
+"server is running"));
 // app.listen(5000, ()=>{
 //     console.log("server is listning on port 5000");
 // });
