@@ -3,13 +3,13 @@ const cms = require("./routes/cms")
 const express = require('express');
 const cors = require('cors')
 // const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
-const https = require('https');
-const fs = require('fs');
+// const https = require('https');
+// const fs = require('fs');
 
-const options = {
-  key: fs.readFileSync('key.pem'),
-  cert: fs.readFileSync('cert.pem')
-};
+// const options = {
+//   key: fs.readFileSync('key.pem'),
+//   cert: fs.readFileSync('cert.pem')
+// };
 
 
 
@@ -48,15 +48,15 @@ app.use('/cms', cors(corsOptions), cms)
 
 
 
-// const PORT = process.env.PORT || 5000;
-// app.listen(PORT, () => {
-//     console.log(`server is running on port ${ PORT }`);
-// });
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log(`server is running on port ${ PORT }`);
+});
 
-https.createServer(options, function (req, res) {
-  res.writeHead(200);
-  console.log(`server is running on port ${ PORT }`);
-}).listen(5000);
+// https.createServer(options, function (req, res) {
+//   res.writeHead(200);
+//   console.log(`server is running on port ${ PORT }`);
+// }).listen(5000);
 
 
 // app.listen(5000, ()=>{
