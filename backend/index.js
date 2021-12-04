@@ -24,10 +24,11 @@ app.use(bodyParser.json())
 // app.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/], 301));
 // app.use(redirectToHTTPS());
 
-// var corsOptions = {
-//   origin: 'https://toonworld.io',
-//   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-// }
+var corsOptions = {
+  origin: 'https://toonworld.io',
+  "Access-Control-Allow-Origin": "*",
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
 app.use(cors())
 
 const  mongoose = require('mongoose')
@@ -43,15 +44,15 @@ mongoose
     console.log(err);
   })
 
-  app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*")
-  }) 
+  // app.use((req, res, next) => {
+  //   res.header("Access-Control-Allow-Origin", "*")
+  // }) 
 
-// app.use('/admin', cors(corsOptions), admin);
-// app.use('/cms', cors(corsOptions), cms)
+app.use('/admin', cors(corsOptions), admin);
+app.use('/cms', cors(corsOptions), cms)
 
-app.use('/admin', admin);
-app.use('/cms', cms)
+// app.use('/admin', admin);
+// app.use('/cms', cms)
 
 
 
