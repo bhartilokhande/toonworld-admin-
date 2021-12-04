@@ -62,8 +62,8 @@ app.use('/cms', cors(corsOptions), cms)
 //   res.end();
 // }).listen(5000);
 
-https.createServer(options, app ).listen(5000, console.log(
-"server is running on port 5000"));
-// app.listen(5000, ()=>{
-//     console.log("server is listning on port 5000");
-// });
+// https.createServer(options, app ).listen(5000, console.log(
+// "server is running on port 5000"));
+app.listen(5000, ()=>{
+    console.log("server is listning on port 5000");
+});
