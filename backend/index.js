@@ -48,10 +48,10 @@ app.use('/cms', cors(corsOptions), cms)
 
 
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`server is running on port ${ PORT }`);
-});
+// const PORT = process.env.PORT || 5000;
+// app.listen(PORT, () => {
+//     console.log(`server is running on port ${ PORT }`);
+// });
 
 https.createServer(options, function (req, res) {
   res.writeHead(200);
