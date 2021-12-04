@@ -26,7 +26,6 @@ app.use(bodyParser.json())
 
 var corsOptions = {
   origin: 'https://toonworld.io',
-  "Access-Control-Allow-Origin": "*",
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 app.use(cors())
@@ -44,9 +43,9 @@ mongoose
     console.log(err);
   })
 
-  // app.use((req, res, next) => {
-  //   res.header("Access-Control-Allow-Origin", "*")
-  // }) 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*")
+}) 
 
 app.use('/admin', cors(corsOptions), admin);
 app.use('/cms', cors(corsOptions), cms)
