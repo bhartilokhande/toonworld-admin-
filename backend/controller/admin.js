@@ -371,22 +371,22 @@ exports.contact = async (req, res) => {
 
     let transporter = nodemailer.createTransport(
         {
-            // service: "gmail",
-            host: "smtp.gmail.com",
+            service: "gmail",
+            // host: "smtp.gmail.com",
             port: 465,
             secure: false,
-            connectionTimeout: 60000,
+            // connectionTimeout: 60000,
             // sendmail: true,
-            // auth: {
-            //     user: "bulbul.infograins@gmail.com", 
-            //     pass: "BulBul@123"    
-            // },
+            auth: {
+                user: "bulbul.infograins@gmail.com", 
+                pass: "BulBul@123"    
+            },
             tls: { rejectUnauthorized: false }
         }
     );
 
     let mailOptions = {
-        from: "ndmap24@gmail.com",
+        from: userData.email,
         // to: "bulbulbagwan918@gmail.com", 
         to: "support@alture.world",
         subject: userData.subject,
