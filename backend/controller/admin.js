@@ -186,7 +186,7 @@ exports.update_FAQ = async (req, res) => {
     }
     FAQ.updateOne({ _id: faq_id }, { $set: { question: question, answer: answer } }).then(result => {
         // return res.status(200).json({message: "Contents  Updated"})
-        return res.redirect("https://toonworld.io/admin/faq.html")
+        return res.redirect("http://toonworld.io/admin/faq.html")
         // return res.redirect("http://127.0.0.1:5501/faq.html")
 
     }).catch(err => {
@@ -202,7 +202,7 @@ exports.delete_FAQ = async (req, res) => {
     }
     var delete_FAQ_Data = await FAQ.updateOne({ _id: faq_id }, { $set: { isDelete: true } })
     // console.log("delete_FAQ_Data",delete_FAQ_Data)
-    res.redirect("https://toonworld.io/admin/faq.html")
+    res.redirect("http://toonworld.io/admin/faq.html")
     // res.redirect("http://127.0.0.1:5501/faq.html")
 
 }
