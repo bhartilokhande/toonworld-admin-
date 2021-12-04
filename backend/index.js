@@ -42,6 +42,10 @@ mongoose
   }).catch((err)=>{
     console.log(err);
   })
+  
+  app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*")
+  }) 
 
 app.use('/admin', cors(corsOptions), admin);
 app.use('/cms', cors(corsOptions), cms)
