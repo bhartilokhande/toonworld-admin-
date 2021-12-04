@@ -13,7 +13,7 @@ app.use(bodyParser.json())
 app.use(redirectToHTTPS());
 
 var corsOptions = {
-  origin: 'https://www.toonworld.io',
+  origin: 'https://toonworld.io',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 app.use(cors())
