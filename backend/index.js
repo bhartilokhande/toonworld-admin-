@@ -2,14 +2,18 @@ const admin = require("./routes/admin");
 const cms = require("./routes/cms")
 const express = require('express');
 const cors = require('cors')
+const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS
+
 const app = express();
 
 var bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+// app.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/], 301));
+app.use(redirectToHTTPS());
 
 var corsOptions = {
-  origin: 'http://toonworld.io',
+  origin: 'https://www.toonworld.io',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 app.use(cors())
